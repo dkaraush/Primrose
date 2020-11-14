@@ -2957,7 +2957,8 @@ class Primrose extends EventBase {
                 tgfx.translate((lineCountWidth - 0.5) * character.width, -scroll.y * character.height);
                 let lastLineNumber = -1;
                 const minY = scroll.y | 0,
-                    maxY = minY + gridBounds.height;
+                    maxY = minY + gridBounds.height;
+
                 tokenFront.setXY(rows, 0, minY);
                 tokenBack.copy(tokenFront);
                 for (let y = minY; y <= maxY && y < rows.length; ++y) {
@@ -3270,7 +3271,8 @@ class Primrose extends EventBase {
                 currentStringIndex += row.stringLength;
                 currentTokenIndex += row.numTokens;
 
-                if (row.tokens[row.tokens.length - 1].type === "newlines") {
+                if (row.tokens[row.tokens.length - 1] &&
+                    row.tokens[row.tokens.length - 1].type === "newlines") {
                     ++currentLineNumber;
                 }
             }
@@ -3959,7 +3961,8 @@ class Primrose extends EventBase {
         });
 
         let tx = 0,
-            ty = 0;
+            ty = 0;
+
 
         const findTouch = (touches) => {
             for (let touch of touches) {

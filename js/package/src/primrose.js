@@ -600,7 +600,8 @@ export class Primrose extends EventBase {
                 currentStringIndex += row.stringLength;
                 currentTokenIndex += row.numTokens;
 
-                if (row.tokens[row.tokens.length - 1].type === "newlines") {
+                if (row.tokens[row.tokens.length - 1] &&
+                    row.tokens[row.tokens.length - 1].type === "newlines") {
                     ++currentLineNumber;
                 }
             }
